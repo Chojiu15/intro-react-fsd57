@@ -1,37 +1,16 @@
 import './App.css'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState, useContext } from 'react'
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/20/solid'
 import {Link} from 'react-router-dom'
+import { UserContext } from './context/UsersContext'
 
 
 
 function App() {
 
-  const [users, setUsers] = useState(null)
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const URL = import.meta.env.VITE_URL
-  console.log(URL)
+  const [users, error, loading] = useContext(UserContext)
 
-
-  const fetchUsers = async () => {
-    try {
-      const response = await axios.get(URL)
-      setUsers(response.data)
-    }
-    catch (err) {
-      setError(err.message)
-    }
-    finally {
-      setLoading(false)
-    }
-  }
-
-
-  useEffect(() => {
-    fetchUsers()
-  }, [])
+ 
 
   if (loading) {
     return <p>Loading....</p>
@@ -40,8 +19,6 @@ function App() {
   if (error) {
     return <p>{error}</p>
   }
-
-  console.log(users)
 
   return (
     <>

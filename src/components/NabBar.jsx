@@ -1,8 +1,11 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useContext } from 'react'
+import { UserContext } from '../context/UsersContext'
 
 const navigation = [
   { name: 'Dashboard', href: '/', current: true },
+  { name : 'Weather', href: '/weather', current: false}
 ]
 
 function classNames(...classes) {
@@ -10,6 +13,10 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+
+  const [users] = useContext(UserContext)
+  
+  
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -49,6 +56,7 @@ export default function Example() {
               </div>
             </div>
           </div>
+          There is {users.length} users connected
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <button
               type="button"

@@ -32,8 +32,5 @@ const User = () => {
     )
 }
 
-// ec5f933788ec2e550fc16821c27da3f6
-// https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=ec5f933788ec2e550fc16821c27da3f6
-// https://api.openweathermap.org/data/2.5/weather?q=paris&appid=ec5f933788ec2e550fc16821c27da3f6
 
 export default User
