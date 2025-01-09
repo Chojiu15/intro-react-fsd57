@@ -30,6 +30,8 @@ export const UserController = ({ children }) => {
         fetchUsers()
       }, [])
 
+      
+
     return(
         <UserContext.Provider value={[users, error, loading]}>
             {!loading && children}
