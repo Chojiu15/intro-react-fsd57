@@ -4,6 +4,7 @@ import NavBar from './components/NabBar.jsx'
 import User from './pages/User.jsx'
 import Weather from './pages/Weather.jsx'
 import Register from './pages/Register.jsx'
+import Login from './pages/Login.jsx'
 
 const MyRouter = () => {
     return(
@@ -14,6 +15,7 @@ const MyRouter = () => {
             <Route path='/user/:id' element={<User />} />
             <Route path='/weather' element={<Weather />} />
             <Route path='/register' element={<Register />} /> 
+            <Route path='/login' element={<Login />} />
             <Route path='*' element={<h1>404 page not found</h1>} />
         </Routes>
         </>
