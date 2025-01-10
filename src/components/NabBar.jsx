@@ -3,6 +3,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { useContext } from 'react'
 import { UserContext } from '../context/UsersContext'
 import { AuthContext } from '../context/AuthContext'
+import {Link} from 'react-router-dom'
 
 const navigation = [
   { name: 'Dashboard', href: '/', current: true },
@@ -16,7 +17,7 @@ function classNames(...classes) {
 export default function Example() {
 
   const [users] = useContext(UserContext)
-  const {isAuthenticated} = useContext(AuthContext)
+  const {isAuthenticated, logout} = useContext(AuthContext)
 
   console.log(isAuthenticated)
   
@@ -111,20 +112,24 @@ export default function Example() {
                 : (
                   <>
                   <MenuItem>
-                  <a
-                    href="/profile"
+                  <Link
+                    to="/profile"
                     className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                   >
                     Profile
-                  </a>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
-                  <a
-                    href="/"
-                    className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
+                <button
+                    onClick={() => {
+                      logout()
+                      return false
+                    }}
+                    // href={() => logout}
+                    className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none w-full text-start"
                   >
                     Logout
-                  </a>
+                    </button>
                 </MenuItem>
                 </>
                 )

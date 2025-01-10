@@ -5,6 +5,7 @@ import User from './pages/User.jsx'
 import Weather from './pages/Weather.jsx'
 import Register from './pages/Register.jsx'
 import Login from './pages/Login.jsx'
+import Profile from './pages/Profile.jsx'
 
 const MyRouter = () => {
     return(
@@ -16,6 +17,7 @@ const MyRouter = () => {
             <Route path='/weather' element={<Weather />} />
             <Route path='/register' element={<Register />} /> 
             <Route path='/login' element={<Login />} />
+            <Route path='/profile' element={<Profile />} />
             <Route path='*' element={<h1>404 page not found</h1>} />
         </Routes>
         </>

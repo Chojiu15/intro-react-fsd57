@@ -7,13 +7,16 @@ export const AuthContext = createContext(null)
 
 export const AuthController = ({ children }) => {
     let navigate = useNavigate()
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [isAuthenticated, setIsAuthenticated] = useState(null)
 
 
     useEffect(() => {
         let token = localStorage.getItem('token')
         if(token){
             setIsAuthenticated(true)
+        }
+        else{
+            setIsAuthenticated(false)
         }
     }, []) 
 
@@ -50,9 +53,15 @@ export const AuthController = ({ children }) => {
         }
     }
 
+    const logout = async () => {
+        localStorage.removeItem('token')
+        setIsAuthenticated(false)
+        return navigate('/')
+    }
+
 
     return (
-        <AuthContext.Provider value={{ registerUser, loginUser, isAuthenticated }}>
+        <AuthContext.Provider value={{ registerUser, loginUser, isAuthenticated, logout }}>
             ({children})
         </AuthContext.Provider>
     )
